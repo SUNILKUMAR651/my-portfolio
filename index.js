@@ -272,4 +272,33 @@ window.addEventListener('DOMContentLoaded', () => {
     bar.style.width = percent;
   });
 });
+ const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const nav = document.getElementById('navbar');
+    const card1 = document.getElementById('card1');
+    const card2 = document.getElementById('card2');
+    const footer = document.getElementById('footer');
 
+    // Load saved mode
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark-mode');
+      nav.classList.add('dark-mode');
+      card1.classList.add('dark-mode');
+      card2.classList.add('dark-mode');
+      footer.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      nav.classList.toggle('dark-mode');
+      card1.classList.toggle('dark-mode');
+      card2.classList.toggle('dark-mode');
+      footer.classList.toggle('dark-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        localStorage.removeItem('darkMode');
+      }
+    });
